@@ -37,7 +37,12 @@ public:
 
 auto f5 = std::async(move_only());
 
+auto f6 = std::async(std::launch::async, Y(), 1.2);
+auto f7 = std::async(std::launch::deferred, baz, std::ref(x));
+auto f8 = std::async(std::launch::deferred | std::launch::async, baz, std::ref(x));
+
+
 int main()
 {
-  
+  f7.wait();  
 }
